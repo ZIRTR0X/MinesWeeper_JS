@@ -111,6 +111,10 @@ function bindButton() {
             e.preventDefault();
             button.innerHTML = "X";
         });
+        button.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            button.innerHTML = "ㅤ";
+        });
     });
     
 }
