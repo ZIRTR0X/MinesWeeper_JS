@@ -80,6 +80,7 @@ function bindButtonBack() {
 }
 
 function nbMineAround(button){
+    button.style.backgroundColor = 'lightgrey';
     let x, y = button.id;
     x = parseInt(y.match(/\d+/g)[0]);
     y = parseInt(y.match(/\d+/g)[1]);
@@ -96,7 +97,11 @@ function nbMineAround(button){
     let nbMine = 0;
     let level = document.querySelector('#table').className;
     console.log("level : " + level);
-    // if(x<0 || y<0 || x>level-1 || y>level-1){
+    
+    if(button.classList.contains('mine') == false){
+        button.classList.add('discovered');
+    }
+
     if(y>0){
         //buton top
         if(buttonTop.classList.contains('mine')){
@@ -108,14 +113,14 @@ function nbMineAround(button){
                 nbMine++;
             }
         }
-        if(x<level-1){
+        if(x!=level-1){
             //button top right
             if(buttonTopRight.classList.contains('mine')){
                 nbMine++;
             }
         }
     }
-    if(y<level-1){
+    if(y!=level-1){
         //button bottom
         if(buttonBottom.classList.contains('mine')){
             nbMine++;
@@ -126,7 +131,7 @@ function nbMineAround(button){
                 nbMine++;
             }
         }
-        if(x<level-1){
+        if(x!=level-1){
             //button bottom right
             if(buttonBottomRight.classList.contains('mine')){
                 nbMine++;
@@ -139,27 +144,26 @@ function nbMineAround(button){
             nbMine++;
         }
     }
-    if(x<level-1){
+    if(x!=level-1){
         //button right
         if(buttonRight.classList.contains('mine')){
             nbMine++;
         }
     }
-    // if(nbMine === 0){
-    //     nbMineAround(buttonTop);
-    //     nbMineAround(buttonBottom);
-    //     nbMineAround(buttonLeft);
-    //     nbMineAround(buttonRight);
-    //     nbMineAround(buttonTopLeft);
-    //     nbMineAround(buttonTopRight);
-    //     nbMineAround(buttonBottomLeft);
-    //     nbMineAround(buttonBottomRight);
-    // }
+
     console.log("nb Mine autour "+nbMine);
-    //écrire 1 dans button
     button.innerHTML = nbMine;
+    if(nbMine == 0){
+        if(buttonTop!=null && buttonTop.classList.contains('discovered') == false && y>0) nbMineAround(buttonTop);
+        if(buttonBottom!=null && buttonBottom.classList.contains('discovered') == false && y<level-1) nbMineAround(buttonBottom);
+        if(buttonLeft!=null && buttonLeft.classList.contains('discovered') == false && x>0) nbMineAround(buttonLeft);
+        if(buttonRight!=null && buttonRight.classList.contains('discovered') == false && x<level-1) nbMineAround(buttonRight);
+        if(buttonTopLeft!=null && buttonTopLeft.classList.contains('discovered') == false && y>0 && x>0) nbMineAround(buttonTopLeft);
+        if(buttonTopRight!=null && buttonTopRight.classList.contains('discovered') == false && y>0 && x<level-1) nbMineAround(buttonTopRight);
+        if(buttonBottomLeft!=null && buttonBottomLeft.classList.contains('discovered') == false && y<level-1 && x>0) nbMineAround(buttonBottomLeft);
+        if(buttonBottomRight!=null && buttonBottomRight.classList.contains('discovered') == false && y<level-1 && x<level-1) nbMineAround(buttonBottomRight);
 
-
+    }
 }
 
 function createTable(levelChoice) {
