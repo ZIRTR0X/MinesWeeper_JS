@@ -97,7 +97,7 @@ function nbMineAround(button){
     let nbMine = 0;
     let level = document.querySelector('#table').className;
     console.log("level : " + level);
-    
+
     if(button.classList.contains('mine') == false){
         button.classList.add('discovered');
     }
@@ -199,16 +199,14 @@ function createTable(levelChoice) {
     bindButtonBack()
     //creer tableau de x lignes et y colonnes
     let table = document.createElement('table');
+    table.setAttribute('cellpadding', '0');
+    table.setAttribute('cellspacing', '0');
     table.id = 'table';
     table.className = level;
     gameDiv.appendChild(table);
     //creer les lignes
     for (let i = 0; i < level; i++) {
         let tr = document.createElement('tr');
-        // let button = document.createElement('button');
-        // button.className = 'case';
-        // button.id = 'y' + i;
-        // tr.appendChild(button);
         table.appendChild(tr);
         //creer les colonnes
         for (let j = 0; j < level; j++) {
@@ -227,7 +225,7 @@ function createTable(levelChoice) {
         button.style.width = size + 'px';
         button.style.height = size + 'px';
         button.style.fontSize = fontSize + 'px';
-        button.style.border = '1px solid black';
+        button.style.border = '0.5px solid black';
         button.style.backgroundColor = 'grey';
     });
     dellRightClick();
@@ -243,23 +241,17 @@ function bindButton() {
     button.forEach(function (button) {
         button.addEventListener('contextmenu', function (e) {
             e.preventDefault();
-            // let img = button.querySelector('img');
-            // console.log(img);
-            // img.src = "./flag.png";
-            // button.appendChild(img);
             button.style.backgroundColor = 'grey';
             button.innerHTML = flag;
         });
         button.addEventListener('click', function (e) {
             e.preventDefault();
             button.style.backgroundColor = 'lightgrey';
-            // button.innerHTML = "X";
             if(button.classList.contains('mine')){
                 button.style.backgroundColor = 'red';
                 button.innerHTML = mine;
             }else{
                 let nbMineArd = nbMineAround(button);
-                // button.innerHTML = nbMineArd;
             }
         });
         button.addEventListener('mousedown', function (e) {
