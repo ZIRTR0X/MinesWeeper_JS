@@ -80,7 +80,7 @@ function bindButtonBack() {
 }
 
 function nbMineAround(button){
-    button.style.backgroundColor = 'lightgrey';
+    
     let x, y = button.id;
     x = parseInt(y.match(/\d+/g)[0]);
     y = parseInt(y.match(/\d+/g)[1]);
@@ -100,6 +100,7 @@ function nbMineAround(button){
 
     if(button.classList.contains('mine') == false){
         button.classList.add('discovered');
+        button.style.backgroundColor = 'lightgrey';
     }
 
     if(y>0){
@@ -166,6 +167,42 @@ function nbMineAround(button){
     }
 }
 
+function addMessage(message){
+    let messageDiv = document.createElement('p');
+    messageDiv.innerHTML = message;
+    let gameDiv = document.querySelector('#game');
+    messageDiv.style.fontSize = '20px';
+    gameDiv.appendChild(messageDiv);
+
+}
+
+function winGame(){
+    console.log("verification §§§§");
+    let level = document.querySelector('#table').className;
+    let nbDiscovered = 0;
+    let discovered = document.querySelectorAll('.mine');
+    discovered.forEach(function (button) {
+        if(button.classList.contains('discovered')){
+            nbDiscovered++;
+        }
+    });
+
+    if(nbDiscovered == level){
+        console.log("win");
+        addMessage("You win !");
+        // let table = document.querySelector('#table');
+        // table.remove();
+        
+    }
+}
+
+function gameOver(){
+    console.log("game over");
+    // let table = document.querySelector('#table');
+    //     table.remove();
+        addMessage("Game Over !");
+}
+
 function createTable(levelChoice) {
     let level;
     let size;
@@ -193,7 +230,7 @@ function createTable(levelChoice) {
     let gameDiv = document.createElement('div');
     gameDiv.id = 'game';
     backButton.id = 'back';
-    backButton.innerHTML = 'Back';
+    backButton.innerHTML = 'Back to levels';
     gameDiv.appendChild(backButton);
     body.appendChild(gameDiv);
     bindButtonBack()
@@ -227,6 +264,7 @@ function createTable(levelChoice) {
         button.style.fontSize = fontSize + 'px';
         button.style.border = '0.5px solid black';
         button.style.backgroundColor = 'grey';
+        
     });
     dellRightClick();
     bindButton();
@@ -241,23 +279,32 @@ function bindButton() {
     button.forEach(function (button) {
         button.addEventListener('contextmenu', function (e) {
             e.preventDefault();
-            button.style.backgroundColor = 'grey';
-            button.innerHTML = flag;
+                if(button.classList.contains('flag') == false){
+                    if(button.classList.contains('discovered') == false){
+                        button.style.backgroundColor = 'grey';
+                        button.classList.add('flag');
+                        button.innerHTML = flag;
+                    }
+                }else{
+                    button.classList.remove('flag');
+                    button.innerHTML = "";
+                }
         });
         button.addEventListener('click', function (e) {
             e.preventDefault();
-            button.style.backgroundColor = 'lightgrey';
-            if(button.classList.contains('mine')){
-                button.style.backgroundColor = 'red';
-                button.innerHTML = mine;
-            }else{
-                let nbMineArd = nbMineAround(button);
+            
+            if(button.classList.contains('flag') == false){
+                console.log("click function");
+                button.style.backgroundColor = 'lightgrey';
+                winGame();
+                nbMineAround(button);
+                if(button.classList.contains('mine')){
+                    button.classList.add('discovered');
+                    button.style.backgroundColor = 'red';
+                    button.innerHTML = mine;
+                    gameOver();
+                }
             }
-        });
-        button.addEventListener('mousedown', function (e) {
-            e.preventDefault();
-            button.style.backgroundColor = 'grey';
-            button.innerHTML = "";
         });
     });
 }
