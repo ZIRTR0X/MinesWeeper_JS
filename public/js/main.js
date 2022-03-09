@@ -69,6 +69,14 @@ function dellRightClick() {
     });
 }
 
+function unactivateButton(){
+    let button = document.querySelectorAll('.case');
+    button.forEach(function (button) {
+        console.log("unactivateButton");
+        button.disabled = true;
+    });
+}
+
 function bindButtonBack() {
     let backButton = document.querySelector('#back');
     backButton.addEventListener('click', function () {
@@ -188,19 +196,16 @@ function winGame(){
     });
 
     if(nbDiscovered == level){
+        unactivateLeftClick();
         console.log("win");
         addMessage("You win !");
-        // let table = document.querySelector('#table');
-        // table.remove();
-        
     }
 }
 
 function gameOver(){
+    unactivateButton();
     console.log("game over");
-    // let table = document.querySelector('#table');
-    //     table.remove();
-        addMessage("Game Over !");
+    addMessage("Game Over !");
 }
 
 function createTable(levelChoice) {
