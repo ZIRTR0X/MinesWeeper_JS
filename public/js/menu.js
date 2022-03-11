@@ -22,7 +22,10 @@ function bindLevelButtons() {
 function createMenu() {
     let body = document.querySelector('body');
     let menu = document.createElement('div');
+    let title = document.createElement('h1');
+    title.innerHTML = 'MineSweeper';
     menu.id = 'menu';
+    body.style.textAlign = 'center';
     let levelEasyButton = document.createElement('button');
     levelEasyButton.innerHTML = 'Easy';
     levelEasyButton.className = 'level';
@@ -40,13 +43,13 @@ function createMenu() {
     let choices = document.createElement('p');
     choices.id = 'choices';
     choices.innerHTML = 'Choose a level :';
-
     menu.appendChild(choices);
     menu.appendChild(levelEasyButton);
     menu.appendChild(levelMediumButton);
     menu.appendChild(levelHardButton);
     menu.appendChild(answer);
     menu.appendChild(startButton);
+    body.appendChild(title);
     body.appendChild(menu);
     bindLevelButtons();
     bindStartButton();

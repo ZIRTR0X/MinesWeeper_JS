@@ -33,6 +33,7 @@ function createTable(levelChoice) {
     gameDiv.id = 'game';
     backButton.id = 'back';
     backButton.innerHTML = 'Back to levels';
+    backButton.style.margin = '10px';
     gameDiv.appendChild(backButton);
     body.appendChild(gameDiv);
     bindButtonBack()
@@ -40,6 +41,7 @@ function createTable(levelChoice) {
     table.setAttribute('cellpadding', '0');
     table.setAttribute('cellspacing', '0');
     table.id = 'table';
+    table.style.margin = 'auto';
     table.className = level;
     gameDiv.appendChild(table);
 
@@ -96,7 +98,6 @@ function bindButton() {
                 nbMineAround(button);
                 if(button.classList.contains('mine')){
                     button.classList.add('discovered');
-                    button.style.backgroundColor = 'red';
                     button.innerHTML = mine;
                     gameOver();
                 }
@@ -190,8 +191,9 @@ function nbMineAround(button){
     if(x!=level-1){
         if(buttonRight.classList.contains('mine')) nbMine++;
     }
-
+    
     button.innerHTML = nbMine;
+    
     if(nbMine == 0){
         if(buttonTop!=null && buttonTop.classList.contains('discovered') == false && y>0) nbMineAround(buttonTop);
         if(buttonBottom!=null && buttonBottom.classList.contains('discovered') == false && y<level-1) nbMineAround(buttonBottom);

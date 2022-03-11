@@ -29,6 +29,7 @@ function addMessage(message){
     let gameDiv = document.querySelector('#game');
     messageDiv.style.fontSize = '20px';
     gameDiv.appendChild(messageDiv);
+    messageDiv.style.textAlign = 'center';
 
 }
 
