@@ -22,8 +22,6 @@ function bindLevelButtons() {
 function createMenu() {
     let body = document.querySelector('body');
     let menu = document.createElement('div');
-    let title = document.createElement('h1');
-    title.innerHTML = 'MineSweeper';
     menu.id = 'menu';
     body.style.textAlign = 'center';
     let levelEasyButton = document.createElement('button');
@@ -49,7 +47,6 @@ function createMenu() {
     menu.appendChild(levelHardButton);
     menu.appendChild(answer);
     menu.appendChild(startButton);
-    body.appendChild(title);
     body.appendChild(menu);
     bindLevelButtons();
     bindStartButton();
