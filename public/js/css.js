@@ -1,0 +1,60 @@
+function addCSSMenu(levelEasyButton, levelMediumButton, levelHardButton, startButton, answer, choices) {
+    startButton.style.margin = '10px';
+    startButton.style.fontSize = '20px';
+    startButton.style.backgroundColor = '#404040';
+    startButton.style.color = 'white';
+    startButton.style.border = 'none';
+    startButton.style.borderRadius = '5px';
+    startButton.style.padding = '10px';
+    startButton.style.fontWeight = 'bold';
+    levelEasyButton.style.margin = '10px';
+    levelEasyButton.style.fontSize = '20px';
+    levelEasyButton.style.backgroundColor = '#404040';
+    levelEasyButton.style.color = 'white';
+    levelEasyButton.style.border = 'none';
+    levelEasyButton.style.borderRadius = '5px';
+    levelEasyButton.style.padding = '10px';
+    levelEasyButton.style.fontWeight = 'bold';
+    levelMediumButton.style.margin = '10px';
+    levelMediumButton.style.fontSize = '20px';
+    levelMediumButton.style.backgroundColor = '#404040';
+    levelMediumButton.style.color = 'white';
+    levelMediumButton.style.border = 'none';
+    levelMediumButton.style.borderRadius = '5px';
+    levelMediumButton.style.padding = '10px';
+    levelMediumButton.style.fontWeight = 'bold';
+    levelHardButton.style.margin = '10px';
+    levelHardButton.style.fontSize = '20px';
+    levelHardButton.style.backgroundColor = '#404040';
+    levelHardButton.style.color = 'white';
+    levelHardButton.style.border = 'none';
+    levelHardButton.style.borderRadius = '5px';
+    levelHardButton.style.padding = '10px';
+    levelHardButton.style.fontWeight = 'bold';
+    answer.style.fontSize = '20px';
+    answer.style.color = 'white';
+    answer.style.fontWeight = 'bold';
+    answer.style.margin = '10px';
+    answer.style.fontFamily = 'Clear Sans';
+    answer.style.fontWeight = 'bold';
+    choices.style.fontSize = '30px';
+    choices.style.color = 'white';
+    choices.style.fontWeight = 'bold';
+    choices.style.margin = '10px';
+    body.style.backgroundColor = '#171717';
+    body.style.color = 'orange';
+    body.style.fontFamily = 'Clear Sans';
+    title.style.fontWeight = 'bold';
+    title.style.fontSize = '50px';
+}
+
+function addCSSBackButton(backButton) {
+    backButton.style.margin = '10px';
+    backButton.style.fontSize = '20px';
+    backButton.style.backgroundColor = '#404040';
+    backButton.style.color = 'white';
+    backButton.style.border = 'none';
+    backButton.style.borderRadius = '5px';
+    backButton.style.padding = '10px';
+    backButton.style.fontWeight = 'bold';
+}

@@ -41,6 +41,9 @@ function createMenu() {
     let choices = document.createElement('p');
     choices.id = 'choices';
     choices.innerHTML = 'Choose a level :';
+
+    addCSSMenu(levelEasyButton, levelMediumButton, levelHardButton, startButton, answer, choices);
+
     menu.appendChild(choices);
     menu.appendChild(levelEasyButton);
     menu.appendChild(levelMediumButton);

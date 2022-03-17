@@ -68,6 +68,7 @@ function createTable(levelChoice) {
         button.style.textAlign = 'center';
         button.style.verticalAlign = 'middle';
     });
+    addCSSBackButton(backButton);
     dellRightClick();
     bindButton();
     createMine(nbMine);
@@ -100,8 +101,9 @@ function bindButton() {
                     button.classList.add('discovered');
                     button.innerHTML = mine;
                     gameOver();
+                }else{
+                    winGame();
                 }
-                winGame();
             }
         });
     });
