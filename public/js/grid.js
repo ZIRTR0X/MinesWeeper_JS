@@ -201,14 +201,14 @@ function nbMineAround(button){
         button.innerHTML = nbMine;
         
         if(nbMine == 0){
-            if(buttonTop!=null && buttonTop.classList.contains('discovered') == false && y>0) nbMineAround(buttonTop);
-            if(buttonBottom!=null && buttonBottom.classList.contains('discovered') == false && y<level-1) nbMineAround(buttonBottom);
-            if(buttonLeft!=null && buttonLeft.classList.contains('discovered') == false && x>0) nbMineAround(buttonLeft);
-            if(buttonRight!=null && buttonRight.classList.contains('discovered') == false && x<level-1) nbMineAround(buttonRight);
-            if(buttonTopLeft!=null && buttonTopLeft.classList.contains('discovered') == false && y>0 && x>0) nbMineAround(buttonTopLeft);
-            if(buttonTopRight!=null && buttonTopRight.classList.contains('discovered') == false && y>0 && x<level-1) nbMineAround(buttonTopRight);
-            if(buttonBottomLeft!=null && buttonBottomLeft.classList.contains('discovered') == false && y<level-1 && x>0) nbMineAround(buttonBottomLeft);
-            if(buttonBottomRight!=null && buttonBottomRight.classList.contains('discovered') == false && y<level-1 && x<level-1) nbMineAround(buttonBottomRight);
+            if(buttonTop!=null && !buttonTop.classList.contains('flag') && buttonTop.classList.contains('discovered') == false && y>0) nbMineAround(buttonTop);
+            if(buttonBottom!=null && !buttonBottom.classList.contains('flag') && buttonBottom.classList.contains('discovered') == false && y<level-1) nbMineAround(buttonBottom);
+            if(buttonLeft!=null && !buttonLeft.classList.contains('flag') && buttonLeft.classList.contains('discovered') == false && x>0) nbMineAround(buttonLeft);
+            if(buttonRight!=null && !buttonRight.classList.contains('flag') && buttonRight.classList.contains('discovered') == false && x<level-1) nbMineAround(buttonRight);
+            if(buttonTopLeft!=null && !buttonTopLeft.classList.contains('flag') && buttonTopLeft.classList.contains('discovered') == false && y>0 && x>0) nbMineAround(buttonTopLeft);
+            if(buttonTopRight!=null && !buttonTopRight.classList.contains('flag') && buttonTopRight.classList.contains('discovered') == false && y>0 && x<level-1) nbMineAround(buttonTopRight);
+            if(buttonBottomLeft!=null && !buttonBottomLeft.classList.contains('flag') && buttonBottomLeft.classList.contains('discovered') == false && y<level-1 && x>0) nbMineAround(buttonBottomLeft);
+            if(buttonBottomRight!=null && !buttonBottomRight.classList.contains('flag') && buttonBottomRight.classList.contains('discovered') == false && y<level-1 && x<level-1) nbMineAround(buttonBottomRight);
 
         }
     }
