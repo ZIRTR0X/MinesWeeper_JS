@@ -33,6 +33,13 @@ function addMessage(message){
 
 }
 
+function discoverAllCase(){
+    let allCase = document.querySelectorAll(".case");
+    allCase.forEach(element =>{
+        nbMineAround(element)
+    })
+}
+
 function winGame(){
     let discovered = document.querySelectorAll('.discovered').length;
     let level = document.querySelector('#table').className;
@@ -40,10 +47,12 @@ function winGame(){
     if(discovered == (level*level)-nbMine){
         addMessage("You win !");
         unactivateButton();
+        discoverAllCase();
     }
 }
 
 function gameOver(){
     unactivateButton();
     addMessage("Game Over !");
+    discoverAllCase();
 }

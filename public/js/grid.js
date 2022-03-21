@@ -148,63 +148,68 @@ function createMine(nbMine){
 }
 
 function nbMineAround(button){
-    
-    let x, y = button.id;
-    x = parseInt(y.match(/\d+/g)[0]);
-    y = parseInt(y.match(/\d+/g)[1]);
-
-    let buttonTop = document.querySelector('#x' + x + 'y' + (parseInt(y) - 1));
-    let buttonBottom = document.querySelector('#x' + x + 'y' + (parseInt(y) + 1));
-    let buttonLeft = document.querySelector('#x' + (parseInt(x) - 1) + 'y' + y);
-    let buttonRight = document.querySelector('#x' + (parseInt(x) + 1) + 'y' + y);
-    let buttonTopLeft = document.querySelector('#x' + (parseInt(x) - 1) + 'y' + (parseInt(y) - 1));
-    let buttonTopRight = document.querySelector('#x' + (parseInt(x) + 1) + 'y' + (parseInt(y) - 1));
-    let buttonBottomLeft = document.querySelector('#x' + (parseInt(x) - 1) + 'y' + (parseInt(y) + 1));
-    let buttonBottomRight = document.querySelector('#x' + (parseInt(x) + 1) + 'y' + (parseInt(y) + 1));
-    let nbMine = 0;
-    let level = document.querySelector('#table').className;
-
-    if(button.classList.contains('mine') == false){
-        button.classList.add('discovered');
+    if(button.classList.contains('mine')){
+        button.innerHTML = mine;
         button.style.backgroundColor = 'lightgrey';
-    }
+    }else{
+            
+        let x, y = button.id;
+        x = parseInt(y.match(/\d+/g)[0]);
+        y = parseInt(y.match(/\d+/g)[1]);
 
-    if(y>0){
-        if(buttonTop.classList.contains('mine')) nbMine++;
+        let buttonTop = document.querySelector('#x' + x + 'y' + (parseInt(y) - 1));
+        let buttonBottom = document.querySelector('#x' + x + 'y' + (parseInt(y) + 1));
+        let buttonLeft = document.querySelector('#x' + (parseInt(x) - 1) + 'y' + y);
+        let buttonRight = document.querySelector('#x' + (parseInt(x) + 1) + 'y' + y);
+        let buttonTopLeft = document.querySelector('#x' + (parseInt(x) - 1) + 'y' + (parseInt(y) - 1));
+        let buttonTopRight = document.querySelector('#x' + (parseInt(x) + 1) + 'y' + (parseInt(y) - 1));
+        let buttonBottomLeft = document.querySelector('#x' + (parseInt(x) - 1) + 'y' + (parseInt(y) + 1));
+        let buttonBottomRight = document.querySelector('#x' + (parseInt(x) + 1) + 'y' + (parseInt(y) + 1));
+        let nbMine = 0;
+        let level = document.querySelector('#table').className;
+
+        if(button.classList.contains('mine') == false){
+            button.classList.add('discovered');
+            button.style.backgroundColor = 'lightgrey';
+        }
+
+        if(y>0){
+            if(buttonTop.classList.contains('mine')) nbMine++;
+            if(x>0){
+                if(buttonTopLeft.classList.contains('mine')) nbMine++;
+            }
+            if(x!=level-1){
+                if(buttonTopRight.classList.contains('mine')) nbMine++;
+            }
+        }
+        if(y!=level-1){
+            if(buttonBottom.classList.contains('mine')) nbMine++;
+            if(x>0){
+                if(buttonBottomLeft.classList.contains('mine')) nbMine++;
+            }
+            if(x!=level-1){
+                if(buttonBottomRight.classList.contains('mine')) nbMine++;
+            }
+        }
         if(x>0){
-            if(buttonTopLeft.classList.contains('mine')) nbMine++;
+            if(buttonLeft.classList.contains('mine')) nbMine++; 
         }
         if(x!=level-1){
-            if(buttonTopRight.classList.contains('mine')) nbMine++;
+            if(buttonRight.classList.contains('mine')) nbMine++;
         }
-    }
-    if(y!=level-1){
-        if(buttonBottom.classList.contains('mine')) nbMine++;
-        if(x>0){
-            if(buttonBottomLeft.classList.contains('mine')) nbMine++;
-        }
-        if(x!=level-1){
-            if(buttonBottomRight.classList.contains('mine')) nbMine++;
-        }
-    }
-    if(x>0){
-        if(buttonLeft.classList.contains('mine')) nbMine++; 
-    }
-    if(x!=level-1){
-        if(buttonRight.classList.contains('mine')) nbMine++;
-    }
-    
-    button.innerHTML = nbMine;
-    
-    if(nbMine == 0){
-        if(buttonTop!=null && buttonTop.classList.contains('discovered') == false && y>0) nbMineAround(buttonTop);
-        if(buttonBottom!=null && buttonBottom.classList.contains('discovered') == false && y<level-1) nbMineAround(buttonBottom);
-        if(buttonLeft!=null && buttonLeft.classList.contains('discovered') == false && x>0) nbMineAround(buttonLeft);
-        if(buttonRight!=null && buttonRight.classList.contains('discovered') == false && x<level-1) nbMineAround(buttonRight);
-        if(buttonTopLeft!=null && buttonTopLeft.classList.contains('discovered') == false && y>0 && x>0) nbMineAround(buttonTopLeft);
-        if(buttonTopRight!=null && buttonTopRight.classList.contains('discovered') == false && y>0 && x<level-1) nbMineAround(buttonTopRight);
-        if(buttonBottomLeft!=null && buttonBottomLeft.classList.contains('discovered') == false && y<level-1 && x>0) nbMineAround(buttonBottomLeft);
-        if(buttonBottomRight!=null && buttonBottomRight.classList.contains('discovered') == false && y<level-1 && x<level-1) nbMineAround(buttonBottomRight);
+        
+        button.innerHTML = nbMine;
+        
+        if(nbMine == 0){
+            if(buttonTop!=null && buttonTop.classList.contains('discovered') == false && y>0) nbMineAround(buttonTop);
+            if(buttonBottom!=null && buttonBottom.classList.contains('discovered') == false && y<level-1) nbMineAround(buttonBottom);
+            if(buttonLeft!=null && buttonLeft.classList.contains('discovered') == false && x>0) nbMineAround(buttonLeft);
+            if(buttonRight!=null && buttonRight.classList.contains('discovered') == false && x<level-1) nbMineAround(buttonRight);
+            if(buttonTopLeft!=null && buttonTopLeft.classList.contains('discovered') == false && y>0 && x>0) nbMineAround(buttonTopLeft);
+            if(buttonTopRight!=null && buttonTopRight.classList.contains('discovered') == false && y>0 && x<level-1) nbMineAround(buttonTopRight);
+            if(buttonBottomLeft!=null && buttonBottomLeft.classList.contains('discovered') == false && y<level-1 && x>0) nbMineAround(buttonBottomLeft);
+            if(buttonBottomRight!=null && buttonBottomRight.classList.contains('discovered') == false && y<level-1 && x<level-1) nbMineAround(buttonBottomRight);
 
+        }
     }
 }
